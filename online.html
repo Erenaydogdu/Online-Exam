@@ -1,0 +1,445 @@
+    <!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sınav</title>
+    <style>
+        div.quiz-main{
+            border:1px solid green;
+            display: flex;
+            flex-direction: column;
+        }
+        ul.quiz-nav{
+            background-color: #96d4d4;
+            margin:0;
+            padding:0;
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+        }
+        ul.quiz-nav > li{
+            padding:0.5rem;
+            background-color: #04aa6d;
+            color:white;
+            font-weight: bold;
+            cursor: pointer;
+            border-right: 1px solid white;;
+        }
+        ul.quiz-nav > li:hover{
+            background-color: #d9eee1;
+            color:#333;
+        }
+        .quiz-content{
+            border-top:2px solid #04aa6d;
+        }
+        .quiz-body{
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            box-sizing: border-box;
+            padding:2rem 1rem 2rem 1rem;
+        }
+        .quiz-body > div{
+            display: none;
+        }
+        .quiz-body > div.active{
+            display: block;
+        }
+        .quiz-body > div > div{
+            display: flex;
+            flex-direction: column;
+
+        }
+        .quiz-body > div > div:nth-child(1){
+            padding: 1rem 0;
+            font-size:18px;
+        }
+        .quiz-body > div > div:nth-child(2){
+
+        }
+        .quiz-body > div > div:nth-child(2) > div{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+        }
+        .quiz-body > div > div:nth-child(2) > div input{
+            transform: scale(1.3);
+        }
+        .quiz-body > div > div:nth-child(2) > div p{
+            margin:0;
+            padding:0;
+        }
+        .quiz-body > div > div:nth-child(2) > div{
+            padding:0.5rem 0;
+        }
+        
+        .quiz-body > div > div:nth-child(2) > div label{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .quiz-body > div > div:nth-child(2) > div:hover{
+            background-color: #d9eee1;
+        }
+        .quiz-body > div > div:nth-child(2) > div > div:last-child{
+            flex-basis: 95%;
+        }
+        .quiz-body > div > div:nth-child(2) > div > div:first-child{
+            flex-basis: 5%;
+            padding: 0.2rem;
+            line-height: 30px;
+            padding-right: 1rem;
+
+        }
+        ul.quiz-nav > li.active{
+            background-color: #333;
+            color:white;
+        }
+        div[data-index="soru"].active{
+            background:#96d4d4;
+            border-radius:10px;
+        }
+        .btn{
+            background-color: #04aa6d;
+            color:white;
+            border:1px solid #333;
+            padding:0.5rem;
+
+        }
+        .btn:hover{
+            background-color: #333;
+            cursor: pointer;
+        }
+        .dogru{
+            background-color: #04aa6d;
+            border-radius: 10px;
+        }
+        .yanlis{
+            border-radius: 10px;
+            background-color: tomato;
+        }
+        #hepsiniGoster{
+            display: none;
+        }
+        .quiz-body > div > div:nth-child(3){
+            display: none ;
+            background-color: red;
+            padding:1rem;
+        }
+        p.cevap{
+            display: none;
+            background-color: #dadada;
+            padding:1rem;
+            margin-top:1rem;
+            border:2px solid #04aa6d;
+            border-radius: 5px;
+        }
+        div.img{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        div.img img{
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="quiz-main">
+        <div>
+            <ul class="quiz-nav">
+                <li data-index="0" class="active">1</li>
+                <li data-index="1">2</li>
+                <li data-index="2">3</li>
+                <li data-index="3">Test Durum</li>
+            </ul>
+        </div>
+        <div class="quiz-content">
+            <div class="quiz-body">
+                <!--soru-1-->
+                <div id="s-1" class="active">
+                    <div>
+                        <div class="img">
+                            <div>
+                                <img src="resimler/soru-1.jpg" />
+                            </div>
+                        </div>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita alias iusto laboriosam voluptates atque facilis? Vitae praesentium mollitia animi distinctio.</p>
+                        <p class="cevap"> CEVAP 1 </p>
+                    </div>
+                    <div class="secenek">
+                        <div data-index="soru" data-s="s-1">
+    
+                            <div >
+                                <input id="s-1-a" type="radio" name="s-1" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-1-a">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                        <div  data-index="soru" data-s="s-1"   class="">
+    
+                            <div>
+                                <input id="s-1-b" type="radio"  name="s-1" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-1-b">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                        <div data-index="soru" data-s="s-1"  class="">
+    
+                            <div>
+                                <input id="s-1-c" type="radio"  name="s-1" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-1-c">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                        <div  data-index="soru" data-s="s-1"  class="">
+    
+                            <div>
+                                <input id="s-1-d" type="radio"  name="s-1" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-1-d">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--soru 1 End-->
+                <!--soru-1-->
+                <div id="s-2">
+                    <div>
+                        <p class="img"></p>
+                        <p>Soru 2 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita alias iusto laboriosam voluptates atque facilis? Vitae praesentium mollitia animi distinctio.</p>
+                        <p class="cevap"> CEVAP 2</p>
+                    </div>
+                    <div class="secenek">
+                        <div data-index="soru" data-s="s-2" >
+                            <div >
+                                <input id="s-2-a" type="radio" name="s-2" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-2-a">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                        <div  data-index="soru" data-s="s-2"   class="">
+    
+                            <div>
+                                <input id="s-2-b" type="radio"  name="s-2" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-2-b">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                        <div data-index="soru" data-s="s-2"  class="">
+    
+                            <div>
+                                <input id="s-2-c" type="radio"  name="s-2" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-2-c">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                        <div  data-index="soru" data-s="s-2"  class="">
+    
+                            <div>
+                                <input id="s-2-d" type="radio"  name="s-2" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-2-d">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!--soru 1 End-->
+                <!--soru-1-->
+                <div id="s-3">
+                    <div>
+                        <p class="img"></p>
+                        <p>Soru 3 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita alias iusto laboriosam voluptates atque facilis? Vitae praesentium mollitia animi distinctio.</p>
+                        <p class="cevap"> CEVAP</p>
+                    </div>
+                    <div class="secenek">
+                        <div data-index="soru" data-s="s-3" >
+                            <div >
+                                <input id="s-3-a" type="radio" name="s-3" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-3-a">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                        <div  data-index="soru" data-s="s-3"   class="">
+    
+                            <div>
+                                <input id="s-3-b" type="radio"  name="s-3" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-3-b">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                        <div data-index="soru" data-s="s-3"  class="">
+    
+                            <div>
+                                <input id="s-3-c" type="radio"  name="s-3" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-3-c">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                        <div  data-index="soru" data-s="s-3"  class="">
+    
+                            <div>
+                                <input id="s-3-d" type="radio"  name="s-3" /> a)
+                            </div>
+                            <div>
+                                <p><label for="s-3-d">Lorem ipsum dolor sit amet.</label></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--soru 1 End-->
+                <div id="s-4" class="cozum">
+                    <div>
+                        <div>
+                            <button type="button" class="btn" id="testBitir">Testi Bitir</button>
+                            <button type="button" class="btn" id="tekrarCoz">Tekrar Çöz</button>
+                            <button type="button" class="btn" id="hepsiniGoster">Tümünü Göster</button>
+                        </div>
+                        <div>
+                            <div id="t-dogru"></div>
+                            <div id="t-yanlis"></div>
+                            <div id="t-bos"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var cevaplar= new Map([
+            ["s-1","s-1-a"],
+            ["s-2","s-2-b"],
+            ["s-3","s-3-c"]
+        ]);
+    
+        var _kardes;
+        var divSoru=document.querySelectorAll('div[data-index="soru"]');
+        for(index in divSoru){
+            divSoru[index].onclick=function(){
+                _kardes=this.closest("div.secenek").children;
+                for (let _i = 0; _i < _kardes.length; _i++) {
+                    _kardes[_i].classList.remove("active");      
+                }
+                this.classList.add("active");
+                this.children[0].children[0].checked=true;
+            }
+        }
+        var ulLi=document.querySelector("ul.quiz-nav").children;      
+        for (let s = 0; s < ulLi.length; s++) {
+            ulLi[s].onclick=function(){
+                
+                let index=this.getAttribute("data-index");
+                for (let xx = 0; xx < document.querySelector("ul.quiz-nav").children.length; xx++) {
+                    document.querySelector("ul.quiz-nav").children[xx].classList.remove("active");
+                }
+                document.querySelector("ul.quiz-nav").children[index].classList.add("active");
+                for (let ss = 0; ss < document.querySelectorAll("div.quiz-body > div").length; ss++) {
+                    document.querySelectorAll("div.quiz-body > div")[ss].classList.remove("active"); 
+                }
+                document.querySelectorAll("div.quiz-body > div")[index].classList.add("active");
+
+            }
+            
+        }
+
+
+        /***********test bitir***********/
+        document.querySelector("#testBitir").onclick=function(){
+            let dogruSayi=0;
+            let yanlisSayi=0;
+            let bosSayi=0;
+            let c=false;
+            cevaplar.forEach((value,key) => {
+                    let c=false;
+                    let anahtar=document.getElementsByName(key);
+                    document.getElementById(value).closest("div").classList.add("dogru");
+                    anahtar.forEach(element => {
+                        
+                        if(element.checked==true){
+                            c=true;
+                            if(element.id==value){
+                                dogruSayi++;
+                            }else{
+                                document.getElementById(element.id).closest("div").classList.add("yanlis");
+                                yanlisSayi++;
+                            }
+                        }
+                    })
+                    if(c==false){
+                        bosSayi++;
+                    }
+            })
+            document.querySelectorAll("div.cevap").forEach(element => {
+                element.style.display="block !important";
+            });
+            document.getElementById("t-dogru").innerHTML="<h4>Doğru Sayısı : "+dogruSayi+"</h4>";
+            document.getElementById("t-yanlis").innerHTML="<h4>Yanlış Sayısı :"+yanlisSayi+"</h4>";
+            document.getElementById("t-bos").innerHTML="<h4>Boş Sayısı : "+bosSayi+"</h4>";
+            document.getElementById("hepsiniGoster").style.display="inline-block";
+            document.querySelectorAll("p.cevap").forEach((element,index) => {
+                element.style.display="block";
+            });
+        }
+        /***********test bitir end*******/
+        /**Tümünü Göster**/
+        document.getElementById("hepsiniGoster").onclick=function(){
+            cevaplar.forEach((value,index)=>{
+                document.getElementById(index).classList.add("active");
+            });
+        }
+        /**Tümünü Göster End**/
+        /**Tekrar Çöz**/
+        document.getElementById("tekrarCoz").onclick=() => {
+            cevaplar.forEach((element,index)=>{
+                let input=document.getElementsByName(index);
+                document.getElementById(index).classList.remove("active");
+                input.forEach((e,i)=>{
+                    e.checked=false;
+                });
+            });
+
+            document.querySelectorAll(".dogru").forEach((element)=>{
+                element.classList.remove("dogru");
+           });
+           document.querySelectorAll(".yanlis").forEach((element)=>{
+                element.classList.remove("yanlis");
+           });
+           document.querySelectorAll("div[data-index='soru']").forEach(element => {
+                element.classList.remove("active");
+           });
+           document.querySelector(".cozum").classList.remove("active");
+           document.getElementById("s-1").classList.add("active");
+           document.getElementById("t-dogru").innerHTML="";
+            document.getElementById("t-yanlis").innerHTML="";
+            document.getElementById("t-bos").innerHTML="";
+            document.getElementById("hepsiniGoster").style.display="none";
+            document.querySelector("ul.quiz-nav li:last-child").classList.remove("active");
+            document.querySelector("ul.quiz-nav li:first-child").classList.add("active");
+            
+        }
+        
+        /**Tekrar Çöz End**/
+
+    </script>
+
+</body>
+</html>
